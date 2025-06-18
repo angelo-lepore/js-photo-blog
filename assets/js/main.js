@@ -16,7 +16,7 @@ fetch(endpoinUrl)
                  <div class="modal hidden">
                    <div class="modal_content">
                      <button class="close-button">✘</button>
-                     <img class="modal_immagine" src="${url}">
+                     <img class="modal_image" src="${url}">
                    </div>
                  </div>
                  <p>${title}</p>
@@ -29,13 +29,13 @@ fetch(endpoinUrl)
 
     const imgEl = document.querySelectorAll(".img");
     const modalEl = document.querySelector(".modal");
-    const modal_immagineEl = document.querySelector(".modal_immagine");
+    const modal_imageEl = document.querySelector(".modal_image");
     const closeEL = document.querySelector(".close-button");
 
     imgEl.forEach((img) => {
       img.addEventListener("click", () => {
-        const immagineSrc = img.getAttribute("src");
-        modal_immagineEl.setAttribute("src", immagineSrc);
+        const imageSrc = img.getAttribute("src");
+        modal_imageEl.setAttribute("src", imageSrc);
         modalEl.classList.remove("hidden");
       });
     });
