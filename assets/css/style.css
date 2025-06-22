@@ -111,21 +111,21 @@ p, h3 {
 
 /* responsive tablet */
 @media screen and (max-width: 768px) {
-    .col-4 {
+    .col-6 {
             width: calc(100% / 12 * 6);
             padding: 1rem;   }
 }
 
 /* responsive mobile */
 @media screen and (max-width: 576px) {
-    .col-4 {
+    .col {
             width: calc(100% / 12 * 12);
             padding: 1rem;   }
 }
 
 /* responsive xs-mobile */
 @media screen and (max-width: 393px) {
-    .col-4 {
+    .col {
         width: calc(100% / 12 * 12);
         padding: 1rem;
     }

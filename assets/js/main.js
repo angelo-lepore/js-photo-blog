@@ -13,7 +13,7 @@ fetch(endpoinUrl)
     data.forEach((post) => {
       const { title, date, url } = post;
       const postMarkupStr = `
-        <div class="col-4">
+        <div class="col-4 col-6 col">
              <div class="card">
                  <img class="pin" src="./assets/img/pin.svg">
                  <img class="img" src="${url}">
@@ -21,7 +21,7 @@ fetch(endpoinUrl)
                    <div class="modal_content">
                      <button class="close-button">✘</button>
                      <img class="modal_image" src="${url}">
-                     <div class="arrow-button">
+                     <div>
                        <i class="fa-solid fa-circle-chevron-right fa-rotate-180" id="before-button"></i>
                        <i class="fa-solid fa-circle-chevron-right" id="next-button"></i>
                      </div>
