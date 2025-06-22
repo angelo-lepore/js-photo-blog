@@ -21,6 +21,10 @@ fetch(endpoinUrl)
                    <div class="modal_content">
                      <button class="close-button">✘</button>
                      <img class="modal_image" src="${url}">
+                     <div class="arrow-button">
+                       <i class="fa-solid fa-circle-chevron-right fa-rotate-180" id="before-button"></i>
+                       <i class="fa-solid fa-circle-chevron-right" id="next-button"></i>
+                     </div>
                    </div>
                  </div>
                  <h3>${title}</h3>
@@ -31,13 +35,40 @@ fetch(endpoinUrl)
       // inserisco il markup in pagina
       rowEl.insertAdjacentHTML("beforeend", postMarkupStr);
     });
+
+    // creo un array con solo gli URL delle immagini
+    const images = data.map((element) => element.url);
+    console.log(images);
+    // inizializzo l'i dell'immagine corrente a 0
+    let currentImageIndex = 0;
+    // ---------- creo una funzione per mostrare l'immagine successiva ----------
+    function nextImage() {
+      // incremento l'i dell'immagine
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      // aggiorno l'immagine mostrata nel DOM
+      document.querySelector(".modal_image").src = images[currentImageIndex];
+    }
+    // eseguo la funzione quando si preme un pulsante
+    document.getElementById("next-button").addEventListener("click", nextImage);
+    // ---------- creo una funzione per mostrare l'immagine precedente ----------
+    function prevImage() {
+      // decremento l'i dell'immagine
+      currentImageIndex =
+        (currentImageIndex - 1 + images.length) % images.length;
+      // aggiorno l'immagine mostrata nel DOM
+      document.querySelector(".modal_image").src = images[currentImageIndex];
+    }
+    // eseguo la funzione quando si preme un pulsante
+    document
+      .getElementById("before-button")
+      .addEventListener("click", prevImage);
+
     // seleziono le immagini aggiunte al DOM e l'elemento dell'immagine nel modal
     const imgEl = document.querySelectorAll(".img");
     const modalEl = document.querySelector(".modal");
     const modal_imageEl = document.querySelector(".modal_image");
     // seleziono il pulsante per chiudere il modal
     const closeEL = document.querySelector(".close-button");
-
     // aggiungo un EventListener a ogni immagine per aprire il modal
     imgEl.forEach((img) => {
       img.addEventListener("click", () => {
@@ -52,5 +83,11 @@ fetch(endpoinUrl)
     // aggiungo un EventListener al pulsante di chiusura per nascondere il modal
     closeEL.addEventListener("click", () => {
       modalEl.classList.add("hidden");
+    });
+    // aggiungo un EventListener per nascondere il modal quando clicco fuori dall'immagine
+    modalEl.addEventListener("click", (event) => {
+      if (event.target === modalEl) {
+        modalEl.classList.add("hidden");
+      }
     });
   });

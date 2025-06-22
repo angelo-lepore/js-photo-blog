@@ -104,6 +104,10 @@ p, h3 {
     color:white;
     cursor: pointer;
 }
+.fa-solid {
+    color: #ffffff;
+    font-size: 30px;
+}
 
 /* responsive tablet */
 @media screen and (max-width: 768px) {
